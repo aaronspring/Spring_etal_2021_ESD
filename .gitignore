@@ -1,0 +1,24 @@
+# Compiled Python files
+*.pyc
+*.png
+.ipynb_checkpoints
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+*.egg-info
+build
+dist
+
+.*~
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+.DS_Store
+data/tmp

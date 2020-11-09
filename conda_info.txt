@@ -1,0 +1,28 @@
+
+     active environment : pymistral
+    active env location : /work/mh0727/m300524/miniconda3/envs/pymistral
+            shell level : 1
+       user config file : /home/mpim/m300524/.condarc
+ populated config files : /home/mpim/m300524/.condarc
+          conda version : 4.8.2
+    conda-build version : not installed
+         python version : 3.7.3.final.0
+       virtual packages : __glibc=2.12
+       base environment : /work/mh0727/m300524/miniconda3  (writable)
+           channel URLs : https://conda.anaconda.org/conda-forge/linux-64
+                          https://conda.anaconda.org/conda-forge/noarch
+                          https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /work/mh0727/m300524/miniconda3/pkgs
+                          /home/mpim/m300524/.conda/pkgs
+       envs directories : /work/bm1124/m300524/conda-envs
+                          /work/mh0727/m300524/miniconda3/envs
+                          /home/mpim/m300524/.conda/envs
+               platform : linux-64
+             user-agent : conda/4.8.2 requests/2.22.0 CPython/3.7.3 Linux/2.6.32-754.33.1.el6.x86_64 rhel/6.10 glibc/2.12
+                UID:GID : 24085:2100
+             netrc file : None
+           offline mode : False
+
