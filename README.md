@@ -33,4 +33,4 @@ The results in this paper were obtained using a number of different software pac
 
 ## Environment
 
-Dependencies (Packages installed) can be found in `requirements.txt` (conda list in `requirements_dev.txt`). Installed via conda (see setup `conda_info.txt`) and pip.
+Dependencies (Packages installed) can be found in `requirements.txt` (conda list in `requirements_final.txt`). Installed via conda (see setup `conda_info.txt`) and pip.
