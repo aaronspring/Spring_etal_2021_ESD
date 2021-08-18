@@ -1,0 +1,8 @@
+xarray
+zarr
+cftime
+climpred
+xskillscore
+matplotlib
+seaborn
+cartopy
