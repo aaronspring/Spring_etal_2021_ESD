@@ -1,6 +1,6 @@
 # Spring et al. 2021
 
-A manuscript will be soon submitted to Biogeosciences.
+A manuscript submitted to ESD: https://esd.copernicus.org/preprints/esd-2021-4/
 
 ## Aim
 
@@ -33,4 +33,4 @@ The results in this paper were obtained using a number of different software pac
 
 ## Environment
 
-Dependencies (Packages installed) can be found in `requirements.txt` (conda list). Installed via conda (see setup `conda_info.txt`) and pip.
+Dependencies (Packages installed) can be found in `requirements.txt` (conda list in `requirements_final.txt`). Installed via conda (see setup `conda_info.txt`) and pip.
