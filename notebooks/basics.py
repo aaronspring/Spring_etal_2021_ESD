@@ -45,7 +45,7 @@ patm_zarr = f"{postpath}/pred_atm.zarr"
 # metadata
 def latexify_units(da):
     if 'units' in da.attrs:
-        da.attrs['units'] = da.attrs['units'].replace('-1','$^{-1}$')
+        da.attrs['units'] = da.attrs['units'].replace('-1','$^{-1}$').replace('-2','$^{-2}$')
     return da
 
 showname_dict=dict()
@@ -112,6 +112,8 @@ def convert_C(ds):
                 ds[data_var].attrs["units"] = (
                     ds[data_var].attrs["units"].replace("kg", "kgC")
                 )
+                ds[data_var] = ds[data_var] * 3600 * 24 * 365.25
+                ds[data_var].attrs["units"] = ds[data_var].attrs["units"].replace(" s-1", " yr-1")
                 print(f"converted {data_var} from CO2 units to C units.")
         if 'intpp' in ds.data_vars and 'mol' in ds['intpp'].attrs['units']:
             ds['intpp'] *= 12/1000
@@ -125,7 +127,9 @@ def convert_C(ds):
                 ds['box_Cpools_total'] = ds['box_Cpools_total']*12/1000
                 ds['box_Cpools_total'].attrs['units'] = ds['box_Cpools_total'].attrs['units'].replace('mol(CO2)','kgC').replace('(grid box)','').strip(' ')
                 print(f'converted box_Cpools_total from mol(CO2) to kgC')
-
+        if "precip" in ds.data_vars and ds["precip"].attrs["units"] == "kg m-2 s-1":
+            ds["precip"] = ds["precip"] * 86400
+            ds["precip"].attrs["units"] = "mm day-1"
     if was_da:
         VAR = list(ds.data_vars)[0]
         ds = ds[VAR]
@@ -135,6 +139,17 @@ def kgC_s_to_PgC_month(ds):
     units = ds.attrs["units"]
     if "kg" in units and "s-1" in units:
         ds = ds * 1 * 10 ** -12 * (60 * 60 * 24 * 30)
+        ds.attrs["units"] = "PgC mon-1"
+        print(f"converted {ds.attrs['long_name']}")
+    elif 'kgC' in units or 'kg' in units:
+        ds = ds * 1e-12
+        ds.attrs["units"] = ds.attrs["units"].replace('kg','Pg').strip(' ')
+    return ds
+
+def kgC_yr_to_PgC_month(ds):
+    units = ds.attrs["units"]
+    if "kg" in units and "yr-1" in units:
+        ds = ds * 1 * 10 ** -12 / 12
         ds.attrs["units"] = "PgC mon-1"
         print(f"converted {ds.attrs['long_name']}")
     elif 'kgC' in units or 'kg' in units:
@@ -377,6 +392,9 @@ def add_figurelabels(ax,labels='abcdefghijklmnopqrstuvwxyz',shift=0,labelsize=No
                                      frameon=frameon, loc=loc, pad=pad, borderpad=borderpad))
     return ax
 
+bbox = dict(boxstyle="round", fc="white")
+
+
 def annotate_figurelabels(
     ax,
     labels="abcdefghijklmnopqrstuvwxyz",
@@ -389,7 +407,12 @@ def annotate_figurelabels(
 
     for i, axes in enumerate(ax.flatten()):
         axes.annotate(
-            s=f"{labels[i+shift]})", xy=xy, xycoords=xycoords, zorder=101, **kwargs
+            s=f"{labels[i+shift]})",
+            xy=xy,
+            xycoords=xycoords,
+            zorder=101,
+            bbox=bbox,
+            **kwargs,
         )
     return ax
 
