@@ -1,6 +1,6 @@
 # Spring et al. 2021
 
-A manuscript submitted to ESD: https://esd.copernicus.org/preprints/esd-2021-4/
+A manuscript published in ESD: https://esd.copernicus.org/articles/12/1139/2021/
 
 ## Aim
 
